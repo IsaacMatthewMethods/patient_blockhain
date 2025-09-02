@@ -8,7 +8,7 @@ class PaymentReciept extends StatefulWidget {
   final String orderID;
   final dynamic amount;
 
-  const PaymentReciept(this.userId, this.orderID, this.amount, {Key? key}) : super(key: key);
+  const PaymentReciept(this.userId, this.orderID, this.amount, {super.key});
 
   @override
   State<PaymentReciept> createState() => _PaymentRecieptState();

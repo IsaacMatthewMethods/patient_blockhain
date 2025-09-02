@@ -4,7 +4,7 @@ import 'package:patient_blockhain/constant/constant.dart';
 class PatientDetailPage extends StatelessWidget {
   final Map patient;
 
-  const PatientDetailPage({Key? key, required this.patient}) : super(key: key);
+  const PatientDetailPage({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {

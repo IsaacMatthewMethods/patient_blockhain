@@ -7,13 +7,12 @@ import '../constant/constant.dart';
 class DefaultButton extends StatelessWidget {
   final title, pressed, color, textColor, icon;
   const DefaultButton(
-      {Key? key,
+      {super.key,
       this.title,
       this.pressed,
       this.color,
       this.icon,
-      this.textColor})
-      : super(key: key);
+      this.textColor});
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ import '../../constant/constant.dart';
 import 'paymentReceipt.dart';
 
 class PaymentHistory extends StatefulWidget {
-  PaymentHistory();
+  const PaymentHistory({super.key});
 
   @override
   State<PaymentHistory> createState() => _PaymentHistoryState();
@@ -47,6 +47,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
     return patientData;
   }
 
+  @override
   void initState() {
     getUserData();
     // highestBidder();
@@ -65,7 +66,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
         return AlertDialog(
           content: Row(
             children: <Widget>[
-              new CircularProgressIndicator(),
+              CircularProgressIndicator(),
               SizedBox(
                 width: 25.0,
               ),

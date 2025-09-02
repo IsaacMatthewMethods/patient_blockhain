@@ -300,8 +300,8 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
           leading: _currentStep > 0
               ? CupertinoButton(
                   padding: EdgeInsets.zero,
-                  child: const Icon(CupertinoIcons.back),
                   onPressed: backStep,
+                  child: const Icon(CupertinoIcons.back),
                 )
               : null,
         ),
@@ -337,8 +337,8 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
                                 vertical: 14,
                               ),
                               borderRadius: BorderRadius.circular(14),
-                              child: const Text('Back'),
                               onPressed: backStep,
+                              child: const Text('Back'),
                             ),
                           CupertinoButton.filled(
                             padding: const EdgeInsets.symmetric(
@@ -346,6 +346,11 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
                               vertical: 14,
                             ),
                             borderRadius: BorderRadius.circular(14),
+                            onPressed: isLoading
+                                ? null
+                                : _currentStep == steps.length - 1
+                                ? submitRegistration
+                                : nextStep,
                             child: _currentStep == steps.length - 1
                                 ? Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -371,11 +376,6 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
                                     ],
                                   )
                                 : const Text('Next'),
-                            onPressed: isLoading
-                                ? null
-                                : _currentStep == steps.length - 1
-                                ? submitRegistration
-                                : nextStep,
                           ),
                         ],
                       ),
@@ -478,7 +478,7 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
   }
 
   Widget _documentUploadStep() {
-    Widget _buildUploadTile(
+    Widget buildUploadTile(
       String label,
       File? image,
       VoidCallback onTap,
@@ -534,14 +534,14 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       children: [
-        _buildUploadTile(
+        buildUploadTile(
           'Upload Other Document (Optional)',
           passportPhoto != null ? File(passportPhoto!.path) : null, // ✅ FIX
           () => pickImage(true),
           CupertinoIcons.camera_fill,
         ),
 
-        _buildUploadTile(
+        buildUploadTile(
           'Upload Other Document (Optional)',
           otherDocument != null ? File(otherDocument!.path) : null, // ✅ FIX
           () => pickImage(false),
@@ -552,7 +552,7 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
   }
 
   Widget _confirmationStep() {
-    Widget _infoTile(String title, String subtitle) => Padding(
+    Widget infoTile(String title, String subtitle) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
@@ -585,21 +585,21 @@ class _PatientRegistrationPageState extends State<PatientRegistrationPage> {
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
-        _infoTile('Full Name', fullNameController.text),
-        _infoTile('Email', emailController.text),
-        _infoTile('Phone Number', phoneController.text),
-        _infoTile(
+        infoTile('Full Name', fullNameController.text),
+        infoTile('Email', emailController.text),
+        infoTile('Phone Number', phoneController.text),
+        infoTile(
           'Passport Photo',
           passportPhoto != null ? 'Uploaded' : 'Not uploaded',
         ),
-        _infoTile(
+        infoTile(
           'Other Document',
           otherDocument != null ? 'Uploaded' : 'Not uploaded',
         ),
-        _infoTile('Age', ageController.text),
-        _infoTile('Gender', selectedGender ?? "Not Selected"),
-        _infoTile('Blood Group', selectedBloodGroup ?? "Not Selected"),
-        _infoTile('Genotype', selectedGenotype ?? "Not Selected"),
+        infoTile('Age', ageController.text),
+        infoTile('Gender', selectedGender ?? "Not Selected"),
+        infoTile('Blood Group', selectedBloodGroup ?? "Not Selected"),
+        infoTile('Genotype', selectedGenotype ?? "Not Selected"),
       ],
     );
   }
@@ -680,11 +680,9 @@ class _InputField extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const _InputField({
-    super.key,
     required this.controller,
     required this.hintText,
     required this.icon,
-    this.isPassword = false,
     this.validator,
   });
 
@@ -720,7 +718,6 @@ class _DropdownField extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const _DropdownField({
-    super.key,
     required this.value,
     required this.items,
     required this.hintText,

@@ -7,7 +7,7 @@ import '../../component/skelaton.dart';
 import '../../constant/constant.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -71,63 +71,60 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             const SizedBox(height: 12),
-            if (userName == null)
-              const ShowSkelaton()
-            else
-              Column(
-                children: [
-                  Text(
-                    "$userName",
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "SF Pro Display",
-                      color: Colors.black87,
+            Column(
+              children: [
+                Text(
+                  "$userName",
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "SF Pro Display",
+                    color: Colors.black87,
+                  ),
+                ),
+                Text(
+                  "($userPhone)",
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Personal Info",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: kDefault,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
-                    "($userPhone)",
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Personal Info",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: kDefault,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
+                ),
+                const SizedBox(height: 12),
 
-                  /// Styled info cards
-                  _infoCard(
-                    title: "Staff Name",
-                    value: userName ?? "",
-                    icon: Icons.person_outline,
-                    iconColor: kDefault,
-                  ),
-                  _infoCard(
-                    title: "Email Address",
-                    value: userEmail ?? "",
-                    icon: Icons.email_outlined,
-                    iconColor: Colors.blue,
-                  ),
-                  _infoCard(
-                    title: "Log out",
-                    value: "Login as $userName",
-                    icon: Icons.logout_outlined,
-                    iconColor: Colors.orange,
-                  ),
-                ],
-              ),
+                /// Styled info cards
+                _infoCard(
+                  title: "Staff Name",
+                  value: userName ?? "",
+                  icon: Icons.person_outline,
+                  iconColor: kDefault,
+                ),
+                _infoCard(
+                  title: "Email Address",
+                  value: userEmail ?? "",
+                  icon: Icons.email_outlined,
+                  iconColor: Colors.blue,
+                ),
+                _infoCard(
+                  title: "Log out",
+                  value: "Login as $userName",
+                  icon: Icons.logout_outlined,
+                  iconColor: Colors.orange,
+                ),
+              ],
+            ),
           ],
         ),
       ),

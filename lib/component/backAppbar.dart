@@ -6,8 +6,7 @@ import '../constant/constant.dart';
 
 class BackAppBar extends StatelessWidget {
   final String name, title;
-  const BackAppBar({Key? key, required this.name, required this.title})
-      : super(key: key);
+  const BackAppBar({super.key, required this.name, required this.title});
 
   @override
   Widget build(BuildContext context) {

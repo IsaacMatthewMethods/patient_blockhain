@@ -9,7 +9,7 @@ class CounsellingContainer extends StatelessWidget {
 
   final url;
   const CounsellingContainer({
-    Key? key,
+    super.key,
     this.title,
     this.onPressed,
     this.subtitle,
@@ -18,7 +18,7 @@ class CounsellingContainer extends StatelessWidget {
     this.date,
     this.counsel,
     this.rank,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +65,11 @@ class CounsellingContainer extends StatelessWidget {
                                     style: TextStyle(
                                         fontFamily: "PTsans", fontSize: 20.0)),
                                 Text(
-                                  '${subtitle}',
+                                  '$subtitle',
                                   style: TextStyle(color: kRed),
                                 ),
                                 Text(
-                                  '${rank}',
+                                  '$rank',
                                   style: TextStyle(color: kRed),
                                 )
                               ],

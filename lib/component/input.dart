@@ -9,15 +9,14 @@ class Input extends StatelessWidget {
   final bool obscure;
   final Icon icon;
   const Input(
-      {Key? key,
+      {super.key,
       required this.obscure,
       required this.icon,
       this.controller,
       this.keyboardType,
       this.text,
       this.validator,
-      this.color})
-      : super(key: key);
+      this.color});
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 
 class UserLogin extends StatefulWidget {
-  const UserLogin({Key? key}) : super(key: key);
+  const UserLogin({super.key});
 
   @override
   State<UserLogin> createState() => _UserLoginState();
@@ -212,7 +212,6 @@ class _InputField extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const _InputField({
-    super.key,
     required this.controller,
     required this.hintText,
     required this.icon,

@@ -6,13 +6,13 @@ class AdminContainer extends StatelessWidget {
   final title, onPressed, icon, subtitle, onTap;
 
   const AdminContainer({
-    Key? key,
+    super.key,
     this.title,
     this.onPressed,
     this.subtitle,
     this.onTap,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class AdminContainer extends StatelessWidget {
                 )),
             title: Text(title, style: TextStyle(fontFamily: "Bold")),
             subtitle: Text(
-              '${subtitle}',
+              '$subtitle',
               style: TextStyle(color: kRed),
             ),
             trailing: icon,

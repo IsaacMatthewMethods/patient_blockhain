@@ -41,7 +41,7 @@ class _FabricListPageState extends State<FabricListPage> {
       {}; // Stores selected quantity per fabric ID
 
   String currentUserId = '';
-  Random random = new Random();
+  Random random = Random();
 
   Future<void> _loadUserProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -160,7 +160,7 @@ class _FabricListPageState extends State<FabricListPage> {
     return '${DateTime.now().millisecondsSinceEpoch}';
   }
 
-  _confirmOrder(price, food_id) async {
+  _confirmOrder(price, foodId) async {
     // setState(() {
     //   isLoading = true;
     // });
@@ -177,20 +177,20 @@ class _FabricListPageState extends State<FabricListPage> {
     );
 
     // Then do the work
-    await _initiateUserTransaction(price, food_id);
+    await _initiateUserTransaction(price, foodId);
 
     // Dialog will be closed in _updateUserTransaction after success
   }
 
-  _initiateUserTransaction(price, food_id) async {
+  _initiateUserTransaction(price, foodId) async {
     SharedPreferences pred = await SharedPreferences.getInstance();
-    final user_id = pred.getString("user_id");
+    final userId = pred.getString("user_id");
     final response = await http.post(
       Uri.parse(myurl),
       body: {
         "request": "INITIATE TRANSACTION",
-        "user_id": user_id.toString(),
-        "fabric_id": food_id.toString(),
+        "user_id": userId.toString(),
+        "fabric_id": foodId.toString(),
         "amount": price.toString(),
         "ref": orderID.toString(),
       },
@@ -203,12 +203,12 @@ class _FabricListPageState extends State<FabricListPage> {
 
   _updateUserTransaction(price) async {
     SharedPreferences pred = await SharedPreferences.getInstance();
-    final user_id = pred.getString("user_id");
+    final userId = pred.getString("user_id");
     final response = await http.post(
       Uri.parse(myurl),
       body: {
         "request": "UPDATE TRANSACTION",
-        "user_id": user_id.toString(),
+        "user_id": userId.toString(),
         "ref": orderID.toString(),
         // "orderID": orderID.toString(),d
         // "accountNo": acoountNo.toString()
@@ -223,7 +223,7 @@ class _FabricListPageState extends State<FabricListPage> {
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => PaymentReciept("$user_id", "$orderID", price),
+          builder: (context) => PaymentReciept("$userId", "$orderID", price),
         ),
       );
     }
@@ -241,6 +241,7 @@ class _FabricListPageState extends State<FabricListPage> {
 
   // Sample data for the menu items
 
+  @override
   void initState() {
     super.initState();
     _fetchFabrics(); // Renamed to private
@@ -359,7 +360,7 @@ class _FabricListPageState extends State<FabricListPage> {
                                   fabric['image_url'] != null &&
                                       fabric['image_url'].isNotEmpty
                                   ? Image.network(
-                                      "${imgUrl}${fabric['image_url']}",
+                                      "$imgUrl${fabric['image_url']}",
                                       width: 110, // Slightly larger image
                                       height: 110,
                                       fit: BoxFit.cover,

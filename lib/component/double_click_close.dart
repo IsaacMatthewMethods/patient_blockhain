@@ -5,7 +5,7 @@ import '../constant/constant.dart';
 
 class DoubleClick extends StatelessWidget {
   final child;
-  const DoubleClick({Key? key, this.child}) : super(key: key);
+  const DoubleClick({super.key, this.child});
 
   @override
   Widget build(BuildContext context) {

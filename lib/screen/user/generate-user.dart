@@ -10,7 +10,7 @@ class GenerateUser extends StatefulWidget {
   const GenerateUser(
     this.user_id,
     this.orderID,
-    this.amount,
+    this.amount, {super.key},
   );
 
   @override
@@ -20,6 +20,7 @@ class GenerateUser extends StatefulWidget {
 class _GenerateUserState extends State<GenerateUser> {
   var user_id;
 
+  @override
   void initState() {
     Timer(Duration(seconds: 5), () {
       if (mounted) {
@@ -33,7 +34,7 @@ class _GenerateUserState extends State<GenerateUser> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime dateToday = new DateTime.now();
+    DateTime dateToday = DateTime.now();
     String date = dateToday.toString().substring(0, 10);
 
     return Scaffold(

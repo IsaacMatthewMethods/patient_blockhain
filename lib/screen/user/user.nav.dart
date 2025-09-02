@@ -6,7 +6,7 @@ import '../../constant/constant.dart';
 import '../patient_registartion.dart';
 
 class CustomerNav extends StatefulWidget {
-  const CustomerNav({Key? key}) : super(key: key);
+  const CustomerNav({super.key});
 
   @override
   State<CustomerNav> createState() => _CustomerNavState();

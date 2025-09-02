@@ -7,9 +7,9 @@ import '../constant/constant.dart';
 class Coun_App extends StatelessWidget {
   final String txt;
   const Coun_App({
-    Key? key,
+    super.key,
     required this.txt,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

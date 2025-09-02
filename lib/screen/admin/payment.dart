@@ -14,7 +14,7 @@ import '../user/paymentReceipt.dart';
 // import 'prescribe.dart';
 
 class PaymentRecord extends StatefulWidget {
-  PaymentRecord();
+  const PaymentRecord({super.key});
 
   @override
   State<PaymentRecord> createState() => _PaymentRecordState();
@@ -23,15 +23,15 @@ class PaymentRecord extends StatefulWidget {
 class _PaymentRecordState extends State<PaymentRecord> {
   List patientData = [];
   var id;
-  int _counter = 1;
+  final int _counter = 1;
   bool isLoading = false;
 
  
 
-  Future<void> deleteItem(String item_id) async {
+  Future<void> deleteItem(String itemId) async {
     ToastContext().init(context);
     SharedPreferences pred = await SharedPreferences.getInstance();
-    final bidder_id = pred.getString('bidder_id');
+    final bidderId = pred.getString('bidder_id');
 
     setState(() {
       isLoading = true;
@@ -39,8 +39,8 @@ class _PaymentRecordState extends State<PaymentRecord> {
     try {
       final res = await http.post(Uri.parse(myurl), body: {
         "request": "DELETE MY BIDDING",
-        "bidder_id": bidder_id,
-        "item_id": item_id
+        "bidder_id": bidderId,
+        "item_id": itemId
       });
       setState(() {
         isLoading = false;
@@ -57,14 +57,14 @@ class _PaymentRecordState extends State<PaymentRecord> {
     }
   }
 
-  void confirmAlert(context, item_id) {
+  void confirmAlert(context, itemId) {
     CoolAlert.show(
         barrierDismissible: false,
         context: context,
         title: "",
         type: CoolAlertType.confirm,
         onConfirmBtnTap: () {
-          deleteItem(item_id);
+          deleteItem(itemId);
         },
         text: "Confirm if you want to delete this Item");
   }
@@ -94,6 +94,7 @@ class _PaymentRecordState extends State<PaymentRecord> {
     return patientData;
   }
 
+  @override
   void initState() {
     getUserData();
     // highestBidder();
@@ -112,7 +113,7 @@ class _PaymentRecordState extends State<PaymentRecord> {
         return AlertDialog(
           content: Row(
             children: <Widget>[
-              new CircularProgressIndicator(),
+              CircularProgressIndicator(),
               SizedBox(
                 width: 25.0,
               ),

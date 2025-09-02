@@ -5,7 +5,7 @@ import '../constant/constant.dart';
 
 class CommonHeader extends StatelessWidget {
   final title;
-  const CommonHeader(this.title);
+  const CommonHeader(this.title, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,14 +56,6 @@ class CommonHeader extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 13.0),
                         child: Container(
-                          child: Center(
-                              child: Text(
-                            "1",
-                            style: TextStyle(
-                                color: kWhite,
-                                fontSize: 12,
-                                fontFamily: "Regular"),
-                          )),
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -78,6 +70,14 @@ class CommonHeader extends StatelessWidget {
                               borderRadius: BorderRadius.circular(25.0)),
                           width: 18,
                           height: 18,
+                          child: Center(
+                              child: Text(
+                            "1",
+                            style: TextStyle(
+                                color: kWhite,
+                                fontSize: 12,
+                                fontFamily: "Regular"),
+                          )),
                         ),
                       ),
                     ],

@@ -9,7 +9,7 @@ class MyContainer extends StatelessWidget {
   final String, head1, btn_text, head2, onpress;
   final icons, color, iconColor;
   const MyContainer(
-      {Key? key,
+      {super.key,
       this.btn_text,
       this.onpress,
       this.String,
@@ -17,8 +17,7 @@ class MyContainer extends StatelessWidget {
       this.head2,
       this.icons,
       this.color,
-      this.iconColor})
-      : super(key: key);
+      this.iconColor});
 
   @override
   Widget build(BuildContext context) {

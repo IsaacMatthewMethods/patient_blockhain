@@ -3,7 +3,7 @@ import 'package:patient_blockhain/component/double_click_close.dart';
 import '../../constant/constant.dart';
 
 class AdminNav extends StatefulWidget {
-  const AdminNav({Key? key}) : super(key: key);
+  const AdminNav({super.key});
 
   @override
   State<AdminNav> createState() => _AdminNavState();

@@ -6,7 +6,7 @@ import '../constant/constant.dart';
 
 class DefaultAppBar extends StatelessWidget {
   final String txt;
-  const DefaultAppBar({Key? key, required this.txt}) : super(key: key);
+  const DefaultAppBar({super.key, required this.txt});
 
   @override
   Widget build(BuildContext context) {

@@ -12,7 +12,7 @@ import '../../constant/constant.dart';
 
 class DonorRecord extends StatefulWidget {
   final status;
-  DonorRecord(this.status);
+  const DonorRecord(this.status, {super.key});
 
   @override
   State<DonorRecord> createState() => _DonorRecordState();
@@ -21,10 +21,10 @@ class DonorRecord extends StatefulWidget {
 class _DonorRecordState extends State<DonorRecord> {
   List patientData = [];
   var id;
-  int _counter = 1;
+  final int _counter = 1;
   bool isLoading = false;
 
-  Future<void> delete(String user_id) async {
+  Future<void> delete(String userId) async {
     ToastContext().init(context);
 
     setState(() {
@@ -32,7 +32,7 @@ class _DonorRecordState extends State<DonorRecord> {
     });
     try {
       final res = await http.post(Uri.parse(myurl),
-          body: {"request": "DELETE STUDENT", "id": user_id});
+          body: {"request": "DELETE STUDENT", "id": userId});
       setState(() {
         isLoading = false;
       });
@@ -99,6 +99,7 @@ class _DonorRecordState extends State<DonorRecord> {
     return patientData;
   }
 
+  @override
   void initState() {
     getUserData();
     profile();
@@ -116,7 +117,7 @@ class _DonorRecordState extends State<DonorRecord> {
         return AlertDialog(
           content: Row(
             children: <Widget>[
-              new CircularProgressIndicator(),
+              CircularProgressIndicator(),
               SizedBox(
                 width: 25.0,
               ),

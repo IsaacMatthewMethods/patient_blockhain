@@ -6,8 +6,7 @@ import '../constant/constant.dart';
 
 class SmallContainer extends StatelessWidget {
   final txt, icon, onTap;
-  const SmallContainer({Key? key, this.txt, this.icon, this.onTap})
-      : super(key: key);
+  const SmallContainer({super.key, this.txt, this.icon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class ListContainer1 extends StatelessWidget {
 
   final int counter;
   const ListContainer1({
-    Key? key,
+    super.key,
     this.title,
     this.price,
     this.dates,
@@ -97,7 +96,7 @@ class ListContainer1 extends StatelessWidget {
     this.driver_name,
     this.viewBidder,
     this.prescribe,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +131,7 @@ class ListContainer1 extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 140,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,7 +250,7 @@ class ListContainer2 extends StatelessWidget {
   final int counter;
 
   const ListContainer2({
-    Key? key,
+    super.key,
     this.title,
     this.paymentDate,
     this.bookingDate,
@@ -267,7 +266,7 @@ class ListContainer2 extends StatelessWidget {
     this.viewBidder,
     this.prescribe,
     required this.counter,
-  }) : super(key: key);
+  });
 
   Color getStatusColor() {
     switch (status?.toLowerCase()) {

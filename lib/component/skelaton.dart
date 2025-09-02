@@ -5,13 +5,13 @@ import '../constant/constant.dart';
 import 'myContainer.dart';
 
 class ShowSkelaton extends StatelessWidget {
-  const ShowSkelaton({Key? key}) : super(key: key);
+  const ShowSkelaton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Shimmer.fromColors(
@@ -21,7 +21,7 @@ class ShowSkelaton extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 5,
                     // ignore: sort_child_properties_last

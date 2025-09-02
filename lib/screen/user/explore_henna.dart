@@ -11,6 +11,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 
 class ExploreDesignsPage extends StatefulWidget {
+  const ExploreDesignsPage({super.key});
+
   @override
   _ExploreDesignsPageState createState() => _ExploreDesignsPageState();
 }
@@ -83,7 +85,7 @@ class _ExploreDesignsPageState extends State<ExploreDesignsPage> {
                 return DesignCard(
                   id: item['artist_design_id'],
                   title: item['title'],
-                  imageUrl: "$imgUrl" + item['image_url'],
+                  imageUrl: imgUrl + item['image_url'],
                   price: "${item['price']}",
                   category: item['category'],
                 );
@@ -237,7 +239,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
     if (picked != null) setState(() => selectedTime = picked);
   }
 
-  void handleBooking(price, design_id) {
+  void handleBooking(price, designId) {
     ToastContext().init(context);
     if (selectedDate == null ||
         selectedTime == null ||
@@ -251,7 +253,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
       return;
     }
 
-    _confirmOrder(price, design_id);
+    _confirmOrder(price, designId);
 
     // ScaffoldMessenger.of(context).showSnackBar(
     //   const SnackBar(content: Text("Booking successful!")),
@@ -265,7 +267,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
       {}; // Stores selected quantity per fabric ID
 
   String currentUserId = '';
-  Random random = new Random();
+  Random random = Random();
 
   Future<void> _loadUserProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -313,7 +315,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
     return '${DateTime.now().millisecondsSinceEpoch}';
   }
 
-  _confirmOrder(price, food_id) async {
+  _confirmOrder(price, foodId) async {
     // setState(() {
     //   isLoading = true;
     // });
@@ -330,20 +332,20 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
     );
 
     // Then do the work
-    await _initiateUserTransaction(price, food_id);
+    await _initiateUserTransaction(price, foodId);
 
     // Dialog will be closed in _updateUserTransaction after success
   }
 
-  _initiateUserTransaction(price, food_id) async {
+  _initiateUserTransaction(price, foodId) async {
     SharedPreferences pred = await SharedPreferences.getInstance();
-    final user_id = pred.getString("user_id");
+    final userId = pred.getString("user_id");
     final response = await http.post(
       Uri.parse(myurl),
       body: {
         "request": "INITIATE_HENNA_TRANSACTION",
-        "user_id": user_id.toString(),
-        "fabric_id": food_id.toString(),
+        "user_id": userId.toString(),
+        "fabric_id": foodId.toString(),
         "amount": price.toString(),
         "ref": orderID.toString(),
       },
@@ -358,12 +360,12 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
     SharedPreferences pred = await SharedPreferences.getInstance();
     final formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
     final formattedTime = selectedTime!.format(context);
-    final user_id = pred.getString("user_id");
+    final userId = pred.getString("user_id");
     final response = await http.post(
       Uri.parse(myurl),
       body: {
         "request": "UPDATE_HENNA_TRANSACTION",
-        "user_id": user_id.toString(),
+        "user_id": userId.toString(),
         "ref": orderID.toString(),
         "book_date": formattedDate,
         "book_time": formattedTime,
@@ -379,7 +381,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => PaymentReciept("$user_id", "$orderID", price),
+          builder: (context) => PaymentReciept("$userId", "$orderID", price),
         ),
       );
     }
@@ -397,6 +399,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
 
   // Sample data for the menu items
 
+  @override
   void initState() {
     super.initState();
     _loadUserProfile();
@@ -563,7 +566,7 @@ class _DesignDetailsPageState extends State<DesignDetailsPage> {
 
             Center(
               child: ElevatedButton.icon(
-                onPressed: () => handleBooking("${widget.price}", widget.id),
+                onPressed: () => handleBooking(widget.price, widget.id),
                 icon: const Icon(Icons.check_circle, color: Colors.white),
                 label: const Text("Book Now", style: TextStyle(fontSize: 16)),
                 style: ElevatedButton.styleFrom(

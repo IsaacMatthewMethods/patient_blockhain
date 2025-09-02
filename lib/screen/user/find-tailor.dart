@@ -7,7 +7,7 @@ import 'package:toast/toast.dart'; // Ensure toast package is correctly initiali
 import '../../constant/constant.dart'; // For kRed, kWhite, etc.
 
 class FindTailorsPage extends StatefulWidget {
-  const FindTailorsPage({Key? key}) : super(key: key);
+  const FindTailorsPage({super.key});
 
   @override
   State<FindTailorsPage> createState() => _FindTailorsPageState();
@@ -263,10 +263,10 @@ class TailorCard extends StatelessWidget {
   final String currentUserId;
 
   const TailorCard({
-    Key? key,
+    super.key,
     required this.tailor,
     required this.currentUserId,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

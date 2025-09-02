@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PaymentHistoryPage extends StatelessWidget {
   final List<Payment> payments;
 
-  PaymentHistoryPage({required this.payments});
+  const PaymentHistoryPage({super.key, required this.payments});
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ import '../../constant/constant.dart';
 
 class SuccessPayment extends StatefulWidget {
   final amount, user_id, type;
-  SuccessPayment(this.amount, this.user_id, this.type);
+  const SuccessPayment(this.amount, this.user_id, this.type, {super.key});
 
   @override
   State<SuccessPayment> createState() => _SuccessPaymentState();
@@ -23,7 +23,7 @@ class _SuccessPaymentState extends State<SuccessPayment> {
   var name, email, username;
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController amount = new TextEditingController();
+  TextEditingController amount = TextEditingController();
 
   bool ActiveConnection = false;
   String T = "";
@@ -138,11 +138,11 @@ class _SuccessPaymentState extends State<SuccessPayment> {
         return AlertDialog(
           content: Row(
             children: <Widget>[
-              new Icon(Icons.cancel, size: 30.0, color: Colors.deepOrange[200]),
+              Icon(Icons.cancel, size: 30.0, color: Colors.deepOrange[200]),
               SizedBox(
                 width: 20.0,
               ),
-              new Text("No Internet Connection!"),
+              Text("No Internet Connection!"),
             ],
           ),
         );
@@ -192,7 +192,7 @@ class _SuccessPaymentState extends State<SuccessPayment> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width,
                                 height: 350,
                                 child: Image.network(
@@ -341,8 +341,9 @@ class _SuccessPaymentState extends State<SuccessPayment> {
                                     child: Column(children: [
                                       Inputs(
                                         validator: (value) {
-                                          if (value.isEmpty)
+                                          if (value.isEmpty) {
                                             return "Amount is required";
+                                          }
                                         },
                                         controller: amount,
                                         hint: "Amount Password",

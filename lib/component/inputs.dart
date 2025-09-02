@@ -6,7 +6,7 @@ class Inputs extends StatelessWidget {
   final controller, keyboardType, text, color, validator;
   final Icon icon;
   const Inputs(
-      {Key? key,
+      {super.key,
       this.hint,
       required this.icon,
       this.controller,
@@ -14,8 +14,7 @@ class Inputs extends StatelessWidget {
       this.text,
       this.color,
       this.validator,
-      this.obsecure})
-      : super(key: key);
+      this.obsecure});
 
   @override
   Widget build(BuildContext context) {

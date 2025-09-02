@@ -6,7 +6,7 @@ import '../constant/constant.dart';
 
 class SubHeader extends StatelessWidget {
   final title, icon;
-  const SubHeader({Key? key, this.title, this.icon}) : super(key: key);
+  const SubHeader({super.key, this.title, this.icon});
 
   @override
   Widget build(BuildContext context) {

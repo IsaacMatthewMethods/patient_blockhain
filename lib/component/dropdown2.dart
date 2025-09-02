@@ -8,11 +8,10 @@ class MyDropDown1 extends StatelessWidget {
   final onChange;
   final List<String> items1;
   const MyDropDown1(
-      {Key? key,
+      {super.key,
       required this.items1,
       this.selectedItem,
-      required this.onChange})
-      : super(key: key);
+      required this.onChange});
 
   @override
   Widget build(BuildContext context) {

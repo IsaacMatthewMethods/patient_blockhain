@@ -10,7 +10,7 @@ import '../../component/subHead.dart';
 import '../../constant/constant.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();

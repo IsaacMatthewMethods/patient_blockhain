@@ -7,6 +7,8 @@ import 'package:patient_blockhain/constant/constant.dart';
 import 'patientViewData.dart';
 
 class PatientDataPage extends StatefulWidget {
+  const PatientDataPage({super.key});
+
   @override
   _PatientDataPageState createState() => _PatientDataPageState();
 }
@@ -96,7 +98,7 @@ class _PatientDataPageState extends State<PatientDataPage> {
                       radius: 28,
                       backgroundColor: Colors.grey.shade200,
                       backgroundImage: NetworkImage(
-                        "${imgUrl}/${patient['passport_photo']}",
+                        "$imgUrl/${patient['passport_photo']}",
                       ),
                     ),
                     title: Text(

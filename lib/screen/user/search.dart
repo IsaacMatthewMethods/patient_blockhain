@@ -6,6 +6,8 @@ import 'package:patient_blockhain/constant/constant.dart';
 import 'patientViewData.dart';
 
 class SearchPatientPage extends StatefulWidget {
+  const SearchPatientPage({super.key});
+
   @override
   _SearchPatientPageState createState() => _SearchPatientPageState();
 }

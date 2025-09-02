@@ -9,7 +9,7 @@ import 'package:patient_blockhain/component/button.dart';
 import 'package:patient_blockhain/constant/constant.dart';
 
 class UserRegister extends StatefulWidget {
-  const UserRegister({Key? key}) : super(key: key);
+  const UserRegister({super.key});
 
   @override
   State<UserRegister> createState() => _UserRegisterState();

@@ -5,7 +5,7 @@ import '../constant/constant.dart';
 // ignore: must_be_immutable
 class ViewTop extends StatelessWidget {
   Color colorStatus;
-  ViewTop(this.colorStatus);
+  ViewTop(this.colorStatus, {super.key});
 
   @override
   Widget build(BuildContext context) {
